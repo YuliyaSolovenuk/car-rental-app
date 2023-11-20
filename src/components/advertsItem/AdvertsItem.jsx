@@ -30,7 +30,7 @@ const AdvertsItem = ({ advert }) => {
   return (
     <Card>
       <CardMedia
-        sx={{ height: 268, width: 274, objectFit: 'contain' }}
+        sx={{ height: 268, objectFit: 'cover' }}
         image={img}
         alt={make}
       />
