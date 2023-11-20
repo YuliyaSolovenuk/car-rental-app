@@ -5,31 +5,45 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Box from '@mui/material/Box';
 
-const AdvertsItem = ({advert}) => {
-     const {img, make, model, year, rentalPrice, address, rentalCompany, type, mileage,  functionalities} = advert;
- 
-     const formatAddress = (address) => {
-          const arrAddress = [...address.split(",")];
-          arrAddress.splice(0, 1);
-          return arrAddress.join(" | ");
-      };
+const AdvertsItem = ({ advert }) => {
+  const {
+    img,
+    make,
+    model,
+    year,
+    rentalPrice,
+    address,
+    rentalCompany,
+    type,
+    mileage,
+    functionalities,
+  } = advert;
+
+  const formatAddress = address => {
+    const arrAddress = [...address.split(',')];
+    arrAddress.splice(0, 1);
+    return arrAddress.join(' | ');
+  };
 
   return (
-    <Card >
+    <Card>
       <CardMedia
         sx={{ height: 426, objectFit: 'contain' }}
         image={img}
         alt={make}
       />
       <CardContent>
-      <FavoriteIcon />
+        <FavoriteIcon />
+        <Box sx={{ display: 'flex'}}>
         <Typography gutterBottom variant="h6" component="div">
           {make} | {model}, {year}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography sx={{ marginLeft: 'auto'}} gutterBottom variant="h5" component="div">
           {rentalPrice}
         </Typography>
+        </Box>
         <Typography variant="p" color="text.secondary">
           {formatAddress(address)} | {rentalCompany}
         </Typography>
