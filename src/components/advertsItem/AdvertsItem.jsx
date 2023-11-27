@@ -28,34 +28,88 @@ const AdvertsItem = ({ advert }) => {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{ height: 426, backgroundColor: 'transparent', boxShadow: 'none' }}
+    >
+      <FavoriteIcon sx={{ position: 'absolute' }} />
       <CardMedia
-        sx={{ height: 268, objectFit: 'cover' }}
+        sx={{
+          height: 268,
+          objectFit: 'cover',
+          position: 'relative',
+          borderRadius: '14px',
+          marginBottom: '14px',
+        }}
+        component="img"
         image={img}
         alt={make}
       />
-      <CardContent>
-        <FavoriteIcon />
-        <Box sx={{ display: 'flex'}}>
-        <Typography gutterBottom variant="h6" component="div">
-          {make} | {model}, {year}
-        </Typography>
-        <Typography sx={{ marginLeft: 'auto'}} gutterBottom variant="h5" component="div">
-          {rentalPrice}
-        </Typography>
+      <CardContent sx={{ padding: 0 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            marginBottom: '8px',
+            fontSize: '16px',
+            color: 'rgba(18, 20, 23)',
+          }}
+        >
+          <Typography variant="h6" component="div">
+            {make}
+          </Typography>
+          {model.length < 8 ? (<Typography
+            sx={{
+              color: 'rgba(52, 112, 255, 1)',
+            }}
+            variant="h5"
+            component="div"
+          >
+            &nbsp;{model}
+          </Typography>) : ""}
+          <Typography variant="h6" component="div">
+            ,&nbsp;{year}
+          </Typography>
+          <Typography
+            sx={{
+              marginLeft: 'auto',
+            }}
+            variant="h6"
+            component="div"
+          >
+            {rentalPrice}
+          </Typography>
         </Box>
-        <Typography variant="p" color="text.secondary">
-          {formatAddress(address)} | {rentalCompany}
-        </Typography>
-        <Typography variant="p" color="text.secondary">
-          {type} | {mileage} | {functionalities[0]}
-        </Typography>
+        <Box
+          sx={{
+            marginBottom: '28px',
+            fontSize: '12px',
+            color: 'rgba(18, 20, 23, 0.5)',
+          }}
+        >
+          <Typography sx={{ marginBottom: '4px' }} variant="p" component="div">
+            {formatAddress(address)} | {rentalCompany}
+          </Typography>
+          {model.length > 8 ? (<Typography variant="p" component="div">
+            {type} | {model} | {mileage} | {functionalities[0]}
+          </Typography>): (<Typography variant="p" component="div">
+            {type} | {mileage} | {functionalities[0]}
+          </Typography>)}
+        </Box>
       </CardContent>
-      <CardActions>
+      <CardActions
+        sx={{
+          padding: 0,
+        }}
+      >
         <Button
           variant="contained"
           size="small"
-          sx={{ textTransform: 'none', width: '100%' }}
+          sx={{
+            textTransform: 'none',
+            padding: 0,
+            height: 44,
+            width: '100%',
+            borderRadius: '12px',
+          }}
         >
           Learn More
         </Button>
